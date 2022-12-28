@@ -33,6 +33,9 @@ if(isset($_GET['signout'])) {
       }elseif($title == "manage-category") {
         echo "Manage Category";
 
+      }elseif($title == "edit-category") {
+        echo "Edit Category";
+        
       }elseif($title == "add-news") {
         echo "Add News";
 
@@ -79,6 +82,9 @@ if(isset($_GET['signout'])) {
       }elseif($pageName == "manage-category") {
         include "pages/manage-category-content.php";
       
+      }elseif($pageName == "edit-category") {
+        include "pages/edit-category-content.php";
+
       }elseif($pageName == "add-news") {
         include "pages/add-news-content.php";
 

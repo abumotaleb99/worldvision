@@ -12,6 +12,9 @@
           }elseif($pageName == "manage-category") {
             echo "Manage Category";
 
+          }elseif($pageName == "edit-category") {
+            echo "Edit Category";
+
           }elseif($pageName == "add-news") {
             echo "Add News";
 
@@ -37,6 +40,9 @@
 
         }elseif($pageName == "manage-category") {
           echo "Manage Category";
+
+        }elseif($pageName == "edit-category") {
+          echo "Edit Category";
 
         }elseif($pageName == "add-news") {
           echo "Add News";
