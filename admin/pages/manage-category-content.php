@@ -66,7 +66,7 @@ if(isset($_GET['id'])) {
                         <a href="edit-category.php?id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit category">
                           Edit
                         </a>|
-                        <a href="?delete=true&id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete category" onclick="return confirm('Delete this information?');">
+                        <a href="?delete=true&id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete category" onclick="return confirm('Delete this category?');">
                           Delete
                         </a>
                       </td>

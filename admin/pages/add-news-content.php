@@ -1,36 +1,55 @@
+<?php
+if($_SESSION['id'] == null) {
+  header('Location: index.php');
+}
+
+require_once "../vendor/autoload.php";
+
+$category = new App\classes\Category();
+$news = new App\classes\News();
+
+$queryResult = $category->getAllPublishedCategoryInfo();
+
+$message = "";
+if(isset($_POST['btn'])) {
+  $message = $news->addNewsInfo($_POST);
+
+}
+
+?>
+
+
 <div class="container-fluid py-2">
     <div class="row">
         <div class="col-xl-5 col-lg-6 col-md-6 d-flex flex-column mx-auto">
             <div class="card card-plain">
                 <div class="card-header pb-0 text-left bg-transparent">
                    <h4 class="font-weight-bolder text-info text-gradient">Add News</h4>
-                   <p class="mb-0" style="color:red;"><?php //echo "Message"; ?></p>
+                   <p class="mb-0" style="color: green;"><?php echo $message; ?></p>
                 </div>
                 <div class="card-body">
-                  <form role="form" action="" method="POST">
+                  <form role="form" action="" method="POST" enctype="multipart/form-data">
                     <label>Category Name</label>
                     <div class="mb-2">
-                      <select name="category_name" class="form-control">
+                      <select name="category_id" class="form-control">
                         <option>Select category name...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <?php while($category = mysqli_fetch_assoc($queryResult)) { ?>
+                          <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                        <?php } ?>
+
                       </select>
                     </div>
                     <label>News Title</label>
                     <div class="mb-2">
-                      <input type="text" name="news_title" class="form-control" placeholder="News title" aria-label="Email" aria-describedby="email-addon" required>
+                      <input type="text" name="title" class="form-control" placeholder="News title" required>
                     </div>
-                    <label>News Short Description</label>
+                    <label>News Description</label>
                     <div class="mb-2">
-                      <textarea name="news_short_description" class="form-control" id="" cols="30" rows="2" placeholder="News short description" required></textarea>
-                    </div>
-                    <label>News Long Description</label>
-                    <div class="mb-2">
-                      <textarea name="news_long_description" class="form-control" id="" cols="30" rows="5" placeholder="News long description" required></textarea>
+                      <textarea name="description" class="textarea form-control" id="" cols="30" rows="5" placeholder="News description" required></textarea>
                     </div>
                     <label>News Image</label>
                     <div class="mb-2">
-                      <input type="file" name="news_img" class="form-control" aria-label="Email" aria-describedby="email-addon" required>
+                      <input type="file" name="image" class="form-control" required>
                     </div>
                     <label>Publication Status</label>
                     <div class="mb-2">
