@@ -5,6 +5,11 @@ use App\classes\Database;
 
 class News {
     public function addNewsInfo($data) {
+        $category_id = mysqli_real_escape_string(Database::dbConnection(), $data['category_id']);
+        $title = mysqli_real_escape_string(Database::dbConnection(), $data['title']);
+        $description = mysqli_real_escape_string(Database::dbConnection(), $data['description']);
+        $status = mysqli_real_escape_string(Database::dbConnection(), $data['status']);
+
         $fileName = $_FILES['image']['name'];
         $directory = "../assets/admin/news_images/";
         $imgUrl = $directory.$fileName;
@@ -27,7 +32,7 @@ class News {
                 }else {
                     move_uploaded_file($_FILES['image']['tmp_name'], $imgUrl);
     
-                    $sql = "INSERT INTO news (category_id, title, description, image, status) VALUES ('$data[category_id]', '$data[title]', '$data[description]', '$imgUrl', '$data[status]')";
+                    $sql = "INSERT INTO news (category_id, title, description, image, status) VALUES ('$category_id', '$title', '$description', '$imgUrl', '$status')";
                     
                     if(mysqli_query(Database::dbConnection(), $sql)) {
                         $message = "News info saved successfully.";
@@ -70,6 +75,11 @@ class News {
     }
 
     public function updateNewsInfo($data) {
+        $category_id = mysqli_real_escape_string(Database::dbConnection(), $data['category_id']);
+        $title = mysqli_real_escape_string(Database::dbConnection(), $data['title']);
+        $description = mysqli_real_escape_string(Database::dbConnection(), $data['description']);
+        $status = mysqli_real_escape_string(Database::dbConnection(), $data['status']);
+
         $fileName = $_FILES['image']['name'];
 
         if($fileName) {
@@ -101,7 +111,7 @@ class News {
                         
                         unlink($newsInfo['image']);
 
-                        $sql = "UPDATE news SET category_id = '$data[category_id]', title = '$data[title]', description = '$data[description]', image = '$imgUrl', status = '$data[status]' WHERE id = '$data[id]' ";
+                        $sql = "UPDATE news SET category_id = '$category_id', title = '$title', description = '$description', image = '$imgUrl', status = '$status' WHERE id = '$data[id]' ";
         
                         if(mysqli_query(Database::dbConnection(), $sql)) {
                             $message = "News info updated successfully.";
@@ -116,7 +126,7 @@ class News {
             }
             
         }else {
-            $sql = "UPDATE news SET category_id = '$data[category_id]', title = '$data[title]', description = '$data[description]', status = '$data[status]' WHERE id = '$data[id]' ";
+            $sql = "UPDATE news SET category_id = '$category_id', title = '$title', description = '$description', status = '$status' WHERE id = '$data[id]' ";
             if(mysqli_query(Database::dbConnection(), $sql)) {
                 $message = "News info updated successfully.";
                 
