@@ -19,7 +19,6 @@ if(isset($_POST['btn'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +38,6 @@ if(isset($_POST['btn'])) {
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/admin/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 </head>
-
 <body class="">
   <main class="main-content  mt-0">
     <section>
@@ -103,5 +101,4 @@ if(isset($_POST['btn'])) {
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/admin/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
-
 </html>

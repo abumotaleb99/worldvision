@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 
 if($_SESSION['id'] == null) {
@@ -13,12 +14,10 @@ if(isset($_GET['signout'])) {
 
 }
 
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +41,12 @@ if(isset($_GET['signout'])) {
       }elseif ($title == "manage-news") {
         echo "Manage News";
 
+      }elseif($title == "view-news") {
+        echo "News Details";
+
+      }elseif($title == "edit-news") {
+        echo "Edit News";
+
       }
 
     }else {
@@ -63,7 +68,6 @@ if(isset($_GET['signout'])) {
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/admin/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 </head>
-
 <body class="g-sidenav-show  bg-gray-100">
   <!-- Sidebar -->
   <?php include "includes/sidebar.php"; ?>
@@ -91,7 +95,14 @@ if(isset($_GET['signout'])) {
       }elseif($pageName == "manage-news") {
         include "pages/manage-news-content.php";
 
+      }elseif($pageName == "view-news") {
+        include "pages/news-details-content.php";
+
+      }elseif($pageName == "edit-news") {
+        include "pages/edit-news-content.php";
+        
       }
+      
 
     }else {
       include "pages/home-content.php";
@@ -349,5 +360,4 @@ if(isset($_GET['signout'])) {
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/admin/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
-
 </html>

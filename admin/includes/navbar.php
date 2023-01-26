@@ -21,6 +21,12 @@
           }elseif ($pageName == "manage-news") {
             echo "Manage News";
 
+          }elseif($title == "view-news") {
+            echo "News Details";
+    
+          }elseif($title == "edit-news") {
+            echo "Edit News";
+
           }
 
         }else {
@@ -50,6 +56,12 @@
         }elseif ($pageName == "manage-news") {
           echo "Manage News";
 
+        }elseif($title == "view-news") {
+          echo "News Details";
+  
+        }elseif($title == "edit-news") {
+          echo "Edit News";
+          
         }
 
       }else {

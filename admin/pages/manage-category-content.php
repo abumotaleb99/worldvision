@@ -40,21 +40,15 @@ if(isset($_GET['id'])) {
                     </tr>
                   </thead>
                   <tbody>
-
-                    <?php $id = 1; ?>
-                    <?php while($categoryInfo = mysqli_fetch_assoc($queryResult)) { ?>
+                    <?php $id = 1; while($categoryInfo = mysqli_fetch_assoc($queryResult)) { ?>
                     <tr>
                       <td>
                         <div class="px-3 py-0">
                             <p class="text-xs font-weight-bold mb-0"><?php echo $id; ?></p>
                         </div>
                       </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $categoryInfo['name']; ?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><?php echo $categoryInfo['description']; ?></p>
-                      </td>
+                      <td><p class="text-xs font-weight-bold mb-0"><?php echo $categoryInfo['name']; ?></p></td>
+                      <td><p class="text-xs text-secondary mb-0"><?php echo $categoryInfo['description']; ?></p></td>
                       <td>
                         <?php if($categoryInfo['status'] == 1) { ?>
                           <span class="badge badge-sm bg-gradient-success">Published</span>
@@ -63,16 +57,15 @@ if(isset($_GET['id'])) {
                         <?php } ?>
                       </td>
                       <td class="align-middle">
-                        <a href="edit-category.php?id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit category">
+                        <a href="edit-category.php?id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs">
                           Edit
                         </a>|
-                        <a href="?delete=true&id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete category" onclick="return confirm('Delete this category?');">
+                        <a href="?delete=true&id=<?php echo $categoryInfo['id']; ?>" class="text-secondary font-weight-bold text-xs" onclick="return confirm('Delete this category?');">
                           Delete
                         </a>
                       </td>
                     </tr>
                     <?php $id++; } ?>
-
                   </tbody>
                 </table>
               </div>
