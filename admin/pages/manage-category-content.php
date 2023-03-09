@@ -53,7 +53,7 @@ if(isset($_GET['id'])) {
                         <?php if($categoryInfo['status'] == 1) { ?>
                           <span class="badge badge-sm bg-gradient-success">Published</span>
                         <?php }else { ?>
-                          <span class="badge badge-sm bg-gradient-secondary">Unublished</span>
+                          <span class="badge badge-sm bg-gradient-secondary">Unpublished</span>
                         <?php } ?>
                       </td>
                       <td class="align-middle">

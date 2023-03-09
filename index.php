@@ -1,3 +1,12 @@
+<?php
+require_once 'vendor/autoload.php';
+
+$category = new App\classes\Category;
+
+$queryResult = $category->getAllPublishedCategoryInfo();
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
@@ -98,35 +107,13 @@
                       </button>
                     </li>
                     <li class="nav-item active">
-                      <a class="nav-link active" href="index.html">Home</a>
+                      <a class="nav-link active" href="index.php">Home</a>
                     </li>
+                    <?php while($categoryInfo = mysqli_fetch_assoc($queryResult)) { ?>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/world.html">World</a>
+                      <a class="nav-link" href="pages/world.html"><?php echo $categoryInfo['name']; ?></a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/author.html">Magazine</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/news-post.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/business.html">Business</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/sports.html">Sports</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/art.html">Art</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/politics.html">Politics</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/real-estate.html">Real estate</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/travel.html">Travel</a>
-                    </li>
+                    <?php } ?>
                     <li class="nav-item">
                       <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>
                     </li>
