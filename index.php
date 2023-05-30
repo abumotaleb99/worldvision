@@ -42,9 +42,10 @@
 
         <!-- Main Content -->
         <?php
-          if(isset($pages)) {
-              if($pages == 'shop') {
-                  include 'pages/shop-content.php';
+          if(isset($pageName)) {
+              if($pageName == 'category') {
+                  include 'pages/category-content.php';
+
               }
 
           }else {

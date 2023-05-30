@@ -1,5 +1,5 @@
 <?php
 $pageName = "category";
-$title = "category";
+$title = "Category";
 
 include "index.php";
