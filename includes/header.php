@@ -13,8 +13,8 @@ $queryResult = $category->getAllPublishedCategoryInfo();
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="d-flex justify-content-between align-items-center navbar-top">
         <ul class="navbar-left">
-          <li>Wed, March 4, 2020</li>
-          <li>30°C,London</li>
+          <li><?php echo date('d F Y'); ?></li>
+          <!-- <li>30°C,London</li> -->
         </ul>
         <div>
           <a class="navbar-brand" href="#"
