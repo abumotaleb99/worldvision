@@ -41,7 +41,19 @@ class Application
         }
     }
 
+    public function getCategoryNameById($id) {
+        $sql = "SELECT * FROM categories WHERE id = $id ";
+
+        if(mysqli_query(Database::dbConnection(), $sql)) {              
+            $queryResult = mysqli_query(Database::dbConnection(), $sql);
+            return $queryResult;
+
+        }else {
+            die("Query Problem".mysqli_error(Database::dbConnection()));
+        }
+    }
 
 
-    
+
+
 }
