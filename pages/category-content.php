@@ -21,9 +21,9 @@ $queryResult = $application->getAllNewsInfoByCategoryId($category_id);
           class="img-fluid"
           alt="world-news"
         />
-        <span class="thumb-title">WORLD</span>
+        <!-- <span class="thumb-title">WORLD</span> -->
       </div>
-        <a href="" class="text-secondary">
+        <a href="view-news.php?id=<?php echo $categoryNewsInfo['id']; ?>" class="text-secondary">
             <h5 class="font-weight-600 mt-0 mb-0">
               <?php echo $categoryNewsInfo['title']; ?>
             </h5>

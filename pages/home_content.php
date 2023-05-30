@@ -109,7 +109,7 @@
       <?php while($latestNewsInfo = mysqli_fetch_assoc($latestNews)) { ?>
         <div class="col-sm-12">
           <div class="border-bottom pb-2">
-            <a href="" class="text-secondary">
+            <a href="#" class="text-secondary">
               <h5 class="font-weight-600 mt-0 mb-0">
               <?php echo $latestNewsInfo['title']; ?>
               </h5>
@@ -164,7 +164,7 @@
               ?>    
             </p>
           </div>
-          <a href="#" class="font-weight-bold text-dark pt-2">Read More</a>
+          <a href="view-news.php?id=<?php echo $newsInfo['id']; ?>" class="font-weight-bold text-dark pt-2">Read More</a>
           </div>
         <?php } ?>
       </div>

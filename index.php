@@ -46,7 +46,10 @@
               if($pageName == 'category') {
                   include 'pages/category-content.php';
 
-              }
+              }elseif($pageName == 'view-news') {
+                include 'pages/view-news-content.php';
+    
+            }
 
           }else {
               include 'pages/home_content.php';
