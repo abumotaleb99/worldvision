@@ -5,6 +5,8 @@
 
   $queryResult = $application->getEightPublishedNewsInfo();
 
+  $latestNews = $application->getLatestNewsInfo();
+
 ?>
 
 <div class="container">
@@ -104,58 +106,27 @@
             <h3 class="section-title">Latest News</h3>
           </div>
         </div>
+      <?php while($latestNewsInfo = mysqli_fetch_assoc($latestNews)) { ?>
         <div class="col-sm-12">
           <div class="border-bottom pb-2">
-            <h5 class="font-weight-600 mt-0 mb-0">
-              South Korea’s Moon Jae-in sworn in vowing address
-            </h5>
+            <a href="" class="text-secondary">
+              <h5 class="font-weight-600 mt-0 mb-0">
+              <?php echo $latestNewsInfo['title']; ?>
+              </h5>
+            </a>
             <p class="text-color m-0 d-flex align-items-center">
-              <span class="fs-10 mr-1">2 hours ago</span>
+              <span class="fs-10 mr-1">
+                <?php 
+                  $time = strtotime($latestNewsInfo['date']);
+                  $myFormatForView = date("m/d/y g:i A", $time);
+                  echo $myFormatForView
+                ?>
+              </span>
               <i class="mdi mdi-bookmark-outline mr-3"></i>
-              <span class="fs-10 mr-1">126</span>
-              <i class="mdi mdi-comment-outline"></i>
             </p>
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="border-bottom pt-2 pb-2">
-            <h5 class="font-weight-600 mt-0 mb-0">
-              South Korea’s Moon Jae-in sworn in vowing address
-            </h5>
-            <p class="text-color m-0 d-flex align-items-center">
-              <span class="fs-10 mr-1">2 hours ago</span>
-              <i class="mdi mdi-bookmark-outline mr-3"></i>
-              <span class="fs-10 mr-1">126</span>
-              <i class="mdi mdi-comment-outline"></i>
-            </p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="border-bottom pt-3 pb-2">
-            <h5 class="font-weight-600 mt-0 mb-0">
-              South Korea’s Moon Jae-in sworn in vowing address
-            </h5>
-            <p class="text-color m-0 d-flex align-items-center">
-              <span class="fs-10 mr-1">2 hours ago</span>
-              <i class="mdi mdi-bookmark-outline mr-3"></i>
-              <span class="fs-10 mr-1">126</span>
-              <i class="mdi mdi-comment-outline"></i>
-            </p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="pt-3">
-            <h5 class="font-weight-600 mt-0 mb-0">
-              South Korea’s Moon Jae-in sworn in vowing address
-            </h5>
-            <p class="text-color m-0 d-flex align-items-center">
-              <span class="fs-10 mr-1">2 hours ago</span>
-              <i class="mdi mdi-bookmark-outline mr-3"></i>
-              <span class="fs-10 mr-1">126</span>
-              <i class="mdi mdi-comment-outline"></i>
-            </p>
-          </div>
-        </div>
+      <?php } ?>
       </div>
     </div>
     <div class="world-news">
@@ -184,7 +155,7 @@
             <p class="fs-15 font-weight-normal">
               <?php 
                 $str = strip_tags(html_entity_decode($newsInfo['description']));
-                $lim = 100;
+                $lim = 80;
                 if (mb_strlen($str,'UTF-8')>$lim)
                 {
                   $str = mb_substr($str, 0, $lim-3, 'UTF-8').'...';

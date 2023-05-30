@@ -17,4 +17,16 @@ class Application
         }
     }
 
+    public function getLatestNewsInfo() {
+        $sql = "SELECT title, date FROM news ORDER BY id DESC LIMIT 4";
+
+        if(mysqli_query(Database::dbConnection(), $sql)) {              
+            $queryResult = mysqli_query(Database::dbConnection(), $sql);
+            return $queryResult;
+
+        }else {
+            die("Query Problem".mysqli_error(Database::dbConnection()));
+        }
+    }
+
 }
